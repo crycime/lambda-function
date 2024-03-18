@@ -1,0 +1,47 @@
+{
+  "name": "lambda-function",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "format": "prettier --write \\\"src/**/*.ts\\\" \\\"test/**/*.ts\\\"",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "sls:deploy": "sls deploy",
+    "sls:fast:deploy": "sls deploy function -f main",
+    "sls:offline": "sls offline",
+    "sls:package": "sls package"
+  },
+  "dependencies": {
+    "@codegenie/serverless-express": "^4.3.0",
+    "aws-lambda": "^1.0.6",
+    "aws-lambda-fastify": "^1.4.4",
+    "dotenv": "^16.4.5",
+    "express": "4.18.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.72",
+    "@types/express": "^4.17.8",
+    "@types/node": "^20.11.3",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "layer": "git+ssh://git@github.com:crycime/cdk-layer",
+    "prettier": "^2.1.2",
+    "serverless": "3.38.0",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-latest-layer-version": "^2.1.2",
+    "serverless-offline": "^6.8.0",
+    "serverless-plugin-optimize": "^4.1.4-rc.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "ts-loader": "^8.0.17",
+    "ts-node": "10.8.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.5"
+  }
+}

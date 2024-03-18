@@ -1,0 +1,33 @@
+org: crycime
+app: demo
+service: lambda-function
+frameworkVersion: '3'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-latest-layer-version
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    path: .env
+
+provider:
+  name: aws
+  deploymentMethod: direct
+  runtime: nodejs16.x
+  runtimeManagement: onFunctionUpdate
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http: ANY /
+      - http: 'ANY /{proxy+}'
+    layers:
+      - arn:aws:lambda:${aws:region}:${aws:accountId}:layer:TsCdkLayer:latest
+    environment:
+      REGION: us-east-1
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
