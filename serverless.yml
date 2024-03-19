@@ -19,6 +19,11 @@ provider:
   deploymentMethod: direct
   runtime: nodejs16.x
   runtimeManagement: onFunctionUpdate
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListAllMyBuckets"
+      Resource: "*"
 
 functions:
   main:
